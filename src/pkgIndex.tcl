@@ -8,8 +8,8 @@ package ifneeded Serif 0.1  [list apply { dir  {
 		windows { set os win }
 		unix    {
 			switch -- $::tcl_platform(os) {
-				Darwin { set os mac }
-				Linux  { set os darwin }
+				Darwin { set os darwin }
+				Linux  { set os linux }
 			}
 		}
 	}
