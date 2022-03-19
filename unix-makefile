@@ -36,7 +36,7 @@ $(error ERROR: Unrecognized ARCH "$(ARCH)" )
 endif
 
 ifndef BUILDDIR
-BUILDDIR=XBUILD
+BUILDDIR=pkg
 endif
 
 

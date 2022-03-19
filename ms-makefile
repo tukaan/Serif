@@ -14,7 +14,7 @@ PATH_SEP=;
 
 !if ! defined(BUILDDIR)
 # -- WARNING: in Unix notation
-BUILDDIR=XBUILD
+BUILDDIR=pkg
 !endif
 
 ## MS-specific Options for CC :
