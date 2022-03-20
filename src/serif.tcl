@@ -61,9 +61,9 @@ proc Serif::load {fontfile} {
 	}
 
 	set preferredFamily $family
-	catch {  ;# Try to get preferredFamily from font metadata
-		set preferredFamily [dict get $fontInfo "preferred_family"]
-	}
+	#catch {  ;# Try to get preferredFamily from font metadata
+	#	set preferredFamily [dict get $fontInfo "preferred_family"]
+	#}
 
 	return preferredFamily
 } 
@@ -123,9 +123,9 @@ proc Serif::query { kind args } {
 		lassign [split $key ","] fontfile family fullname 
 		switch -- $kind {
 			files	{ lappend L $fontfile }
-			families {	lappend L $family }
-			fullnames { lappend L $fullname}
-			details {lappend L $detail }  
+			families { lappend L $family }
+			fullnames { lappend L $fullname }
+			details { lappend L $detail }  
 		} 
 	}
 	lsort -unique $L 
@@ -142,7 +142,7 @@ proc Serif::getFontMetadata {fontfile} {
 	if {$res == {}} {
 		set res [fontMetadata::getFontMetadata $fontfile]
 	}
-	return $res
+	return [lindex $res 0]  ;# TODO: Figure out, why it is a tuple, and remove this lindex
 }
 
 
