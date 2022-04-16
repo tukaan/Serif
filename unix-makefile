@@ -1,23 +1,17 @@
 ## This is just the *preliminary* part of the general 'cross-makefile'.
 ## It's designed for different OS (linux,darwin)
 
-## Expected:
-##   OS : linux, darwin
-##   ARCH: x32 x64
-
-TARGET:=$(OS)-$(ARCH)
-
 ## Set several macro depending on OS, ARCH ...
 ##  PATH_SEP:  character used in PATH (or CLASSPATH) to separate paths
 ##  DLL     :  the full name of the final shared library
 
 ifeq ($(OS), linux)
 PATH_SEP=:
-DLL=serif.so
+DLL=serif_linux_$(ARCH).so
 
 else ifeq ($(OS), darwin)
 PATH_SEP=:
-DLL=serif.dylib
+DLL=serif_mac_$(ARCH).dylib
 
 else
 $(error ERROR: Unrecognized OS "$(OS)" )
@@ -71,7 +65,7 @@ endif
 .SUFFIXES : .c 
 
 DIR_CSRC=src
-DIR_OBJ=$(BUILDDIR)/$(TARGET)
+DIR_OBJ=$(BUILDDIR)
 
 # NOTE: some parts (CC_INCLUDE, ..) will be defined later in cross-makefile
 $(DIR_OBJ)/%.obj :  $(DIR_CSRC)/%.c
@@ -84,13 +78,13 @@ $(DIR_OBJ)/%.obj :  $(DIR_CSRC)/%.c
 ifeq ($(OS), linux)
 LINK=$(CC) -shared -Wl,--no-undefined
 LIBS_OPTIONS=\
-	-LBuildSupport/tcl/$(TARGET)  -ltclstub8.6 \
+	-LBuildSupport/tcl  -ltclstub8.6 \
 	-lfontconfig
 
 else ifeq ($(OS), darwin)
 LINK=$(CC) -shared
 LIBS_OPTIONS=\
-	-LBuildSupport/tcl/$(TARGET)  -ltclstub8.6 \
+	-LBuildSupport/tcl  -ltclstub8.6 \
 	-framework CoreFoundation \
 	-framework CoreText
 

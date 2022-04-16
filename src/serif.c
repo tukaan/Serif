@@ -26,7 +26,7 @@
 
 
 static int
-CMDPROC_loadfont (ClientData unused, OTHER_CMDPROC_ARGS)
+Serif_loadfont (ClientData unused, OTHER_CMDPROC_ARGS)
 {
   int r = TCL_OK;
   if (_objc != 2)
@@ -137,7 +137,7 @@ Custom_FcConfigAppFontRemoveFile (FcConfig * config, const FcChar8 * filename)
 
 
 static int
-CMDPROC_unloadfont (ClientData unused, OTHER_CMDPROC_ARGS)
+Serif_unloadfont (ClientData unused, OTHER_CMDPROC_ARGS)
 {
   int r = TCL_OK;
   if (_objc != 2)
@@ -202,15 +202,15 @@ Serif_Init (Tcl_Interp * interp)
       return TCL_ERROR;
     }
 
-  if (!Tcl_CreateObjCommand (interp, "Serif::core::load",
-			     CMDPROC_loadfont,
+  if (!Tcl_CreateObjCommand (interp, "Serif::load_fontfile",
+			     Serif_loadfont,
 			     (ClientData) NULL, (Tcl_CmdDeleteProc *) NULL))
     {
       return TCL_ERROR;
     }
 
-  if (!Tcl_CreateObjCommand (interp, "Serif::core::unload",
-			     CMDPROC_unloadfont,
+  if (!Tcl_CreateObjCommand (interp, "Serif::unload_fontfile",
+			     Serif_unloadfont,
 			     (ClientData) NULL, (Tcl_CmdDeleteProc *) NULL))
     {
       return TCL_ERROR;

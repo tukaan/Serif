@@ -63,13 +63,12 @@
 ### -- let's start ... --------------------------------------------------------
 ### ---------------------------------------------------------------------------
 
-all: _build
+all: _build clean
 	
-_build: _prepareBuildTree $(BUILDDIR)/$(TARGET)/$(DLL)
+_build: _prepareBuildTree $(BUILDDIR)/$(DLL)
 
 _prepareBuildTree:
 	- $(X_MKDIR) $(BUILDDIR)
-	- $(X_MKDIR) $(BUILDDIR)/$(TARGET)
 
 
 # List of source files
@@ -79,21 +78,11 @@ _prepareBuildTree:
 # Note: don't worry if Unix-object-files are called ".obj". It works!
 
 OBJS= \
-  $(BUILDDIR)/$(TARGET)/serif.obj \
+  $(BUILDDIR)/serif.obj \
 
-$(BUILDDIR)/$(TARGET)/$(DLL): $(OBJS)
+$(BUILDDIR)/$(DLL): $(OBJS)
 	$(LINK) $(LINK_OUT_OPTION)$@  $(OBJS) $(LIBS_OPTIONS)
 
-
-
-### MAKE PACKAGE #############################################################
-
-PKGDIR = $(BUILDDIR)/serif
-
-### CLEANUP ##################################################################
-
 clean:
-	$(X_RMDIR) $(BUILDDIR)
-
-###############################################################################
+	$(X_RM) $(OBJS)
 	  

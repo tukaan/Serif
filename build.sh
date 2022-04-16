@@ -41,7 +41,7 @@ _OS=$(toLower $_OS)
 case $_OS in
   linux*)  _OS=linux
   ;;
-  darwin*) _OS=darwin
+  darwin*) _OS=mac
   ;;
   *) echo Unsupported OS "$_OS"
      exit 1

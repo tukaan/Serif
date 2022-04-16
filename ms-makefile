@@ -7,8 +7,6 @@
 ##   OS : win
 ##   ARCH: x32 or x64
 
-TARGET=$(OS)-$(ARCH)
-
 PATH_SEP=;
 
 
@@ -37,30 +35,28 @@ X_COPYTREE=U2D xcopy
 
 .SUFFIXES : .c 
 
-#
 # Inference Rule: from *.c to *.obj :
 #    DIR_CSRC and DIR_OBJ are defined in the generic cross-makefile
 #    OH NOOO !!!  nmake's inference rules requires that DIR_CSRC and DIR_OBJ
 #      be defined before loading the rule ! 
 #
 DIR_CSRC=src
-DIR_OBJ=$(BUILDDIR)/$(TARGET)
+DIR_OBJ=$(BUILDDIR)
 
 {$(DIR_CSRC)}.c{$(DIR_OBJ)}.obj:
 	$(CC) -c $(CFLAGS) -DUSE_TCL_STUBS -I BuildSupport/tcl/include $< -Fo$@ 
 
 
-  
 ## Commands and options for linking
 LINK=link /DLL
 LINK_OUT_OPTION=-out:
 
 
 LIBS_OPTIONS=\
-	BuildSupport/tcl/$(TARGET)/tclstub86.lib \
+	BuildSupport/tcl/tclstub86.lib \
 	gdi32.lib
 
   
-DLL=serif.dll  
+DLL=serif_windows_$(ARCH).dll  
 
 !INCLUDE cross-makefile

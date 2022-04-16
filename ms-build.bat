@@ -83,4 +83,4 @@ echo =================================
 echo.
    
  :: you can also pass extra args to nmake  ...
-nmake -f ms-makefile OS=win ARCH=%_ARCH% %1 %2 %3 %4 %5 %6 %7 %8 %9
+nmake -f ms-makefile OS=windows ARCH=%_ARCH% %1 %2 %3 %4 %5 %6 %7 %8 %9
