@@ -11,7 +11,7 @@ setlocal
 :: =======================================================================
 :: Edit this line if MS Visual Studio is installed in a different directory.
 
-set _CTOOLSSETUP=%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
+set _CTOOLSSETUP=%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat
 
 :: =======================================================================
 

@@ -4,7 +4,7 @@
 */
 
 
-#include <tcl/tcl.h>
+#include <tcl.h>
 
 #if defined(__linux__)
 #include <stdlib.h>

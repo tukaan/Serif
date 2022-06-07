@@ -44,7 +44,7 @@ DIR_CSRC=src
 DIR_OBJ=$(BUILDDIR)
 
 {$(DIR_CSRC)}.c{$(DIR_OBJ)}.obj:
-	$(CC) -c $(CFLAGS) -DUSE_TCL_STUBS -I BuildSupport/tcl/include $< -Fo$@ 
+	$(CC) -c $(CFLAGS) -DUSE_TCL_STUBS -I C:/ActiveTcl/include $< -Fo$@ 
 
 
 ## Commands and options for linking
@@ -53,7 +53,7 @@ LINK_OUT_OPTION=-out:
 
 
 LIBS_OPTIONS=\
-	BuildSupport/tcl/tclstub86.lib \
+	C:/ActiveTcl/lib/tclstub86.lib \
 	gdi32.lib
 
   
