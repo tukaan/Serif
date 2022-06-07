@@ -1,16 +1,20 @@
 # Serif
-A cross-platform extension for Tcl/Tk to load fonts from files at runtime, without installing it. This extension is based on the [Extrafont](https://sourceforge.net/p/irrational-numbers/code/HEAD/tree/pkgs/extrafont-devkit/) package.
+Sometimes you need to load your own font file into the application at runtime to give it a custom look. While you can't do this in Tcl/Tk or in Tkinter by default, this C extension lets you do load such files in Tukaan really easily.
+Serif is based on the [Extrafont](https://sourceforge.net/p/irrational-numbers/code/HEAD/tree/pkgs/extrafont-devkit/) package.
 
-DO NOT USE this yourself! This project will be a `git submodule` in [Tukaan](https://github.com/tukaan/tukaan), that will interface with it.
+You probably don't need to use this yourself, as it is included in Tukaan, however I provide some development instructions here.
 
 ## Build
 
 ### Linux
-Using the standard GNU/C tool-chain
+You can just simply run `build.sh` to build Serif. A shared object file will be generated in the pkg folder. 
 
-```
-./build.sh x32
+You may need to make the file executable: `chmod +x build.sh`
+
+```bash
 ./build.sh x64
+# or for x86 binaries:
+./build.sh x32
 ```
 If `build.sh x32` (on 64 bit Linux) exits with an error: `/usr/bin/ld cannot find  -lfontconfig`, then you should reinstall `fontconfig-32bit`
 ```
@@ -20,19 +24,21 @@ then run `build.sh` again.
 
 
 ### MacOS
-Using the standard GNU/C tool-chain
+You can use the `build.sh` script, though I have no idea, whether it actually works.
 
 ```
 build.sh x64
 ```
 
 ### Windows
-Using Microsoft Visual Studio (Visual Studio 2015 Community Edition)
-Support for x86/x64 target architecture.
+To build Serif on Windows you'll need:
+- Visual Studio 2019
+- A Tcl installation
 
+You can run `build.bat` to build the binaries.
 ```
-ms-build x32
-ms-build x64
+build.bat x32
+build.bat x64
 ```
 
 
