@@ -1,5 +1,5 @@
 ## This is just the *preliminary* part of the general 'cross-makefile'.
-## It's designed for different OS (linux,darwin)
+## It's designed for different OS (linux,mac)
 
 ## Set several macro depending on OS, ARCH ...
 ##  PATH_SEP:  character used in PATH (or CLASSPATH) to separate paths
@@ -9,7 +9,7 @@ ifeq ($(OS), linux)
 PATH_SEP=:
 DLL=serif_linux_$(ARCH).so
 
-else ifeq ($(OS), darwin)
+else ifeq ($(OS), mac)
 PATH_SEP=:
 DLL=serif_mac_$(ARCH).dylib
 
@@ -54,7 +54,7 @@ ifeq ($(OS), win)
 X_COPYTREE=cp --verbose -uRf -T
 else ifeq ($(OS), linux)
 X_COPYTREE=cp --verbose -uRf -T
-else ifeq ($(OS), darwin)
+else ifeq ($(OS), mac)
 X_COPYTREE=cp -v -Rf
 endif
 
@@ -81,7 +81,7 @@ LIBS_OPTIONS=\
 	-ltclstub8.6 \
 	-lfontconfig
 
-else ifeq ($(OS), darwin)
+else ifeq ($(OS), mac)
 LINK=$(CC) -shared
 LIBS_OPTIONS=\
 	-ltclstub8.6 \
