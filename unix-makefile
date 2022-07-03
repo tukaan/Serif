@@ -82,7 +82,7 @@ LIBS_OPTIONS=\
 	-lfontconfig
 
 else ifeq ($(OS), mac)
-LINK=$(CC) -shared
+LINK=$(CC) -shared -L/usr/local/opt/tcl-tk/lib -I/usr/local/opt/tcl-tk/include
 LIBS_OPTIONS=\
 	-ltclstub8.6 \
 	-framework CoreFoundation \
