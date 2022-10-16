@@ -1,45 +1,27 @@
 # Serif
-Sometimes you need to load your own font file into the application at runtime to give it a custom look. While you can't do this in Tcl/Tk or in Tkinter by default, this C extension lets you do load such files in Tukaan really easily.
 Serif is based on the [Extrafont](https://sourceforge.net/p/irrational-numbers/code/HEAD/tree/pkgs/extrafont-devkit/) package.
 
-You probably don't need to use this yourself, as it is included in Tukaan, however I provide some development instructions here.
-
 ## Build
-
-### Linux
-You can just simply run `build.sh` to build Serif. A shared object file will be generated in the pkg folder. 
-
-You may need to make the file executable: `chmod +x build.sh`
+You can use GNU make to build Serif on Linux, macOS and Windows
 
 ```bash
-./build.sh x64
-# or for x86 binaries:
-./build.sh x32
-```
-If `build.sh x32` (on 64 bit Linux) exits with an error: `/usr/bin/ld cannot find  -lfontconfig`, then you should reinstall `fontconfig-32bit`
-```
-sudo apt-get install libfontconfig1-dev
-```
-then run `build.sh` again.
-
-
-### MacOS
-You can use the `build.sh` script, though I have no idea, whether it actually works.
-
-```
-build.sh x64
+make
 ```
 
-### Windows
-To build Serif on Windows you'll need:
-- Visual Studio 2019
-- A Tcl installation
+### Build requirements
 
-You can run `build.bat` to build the binaries.
-```
-build.bat x32
-build.bat x64
-```
+- Linux
+  * `libfontconfig1-dev`
+
+- Windows
+  * MinGW (MSYS2) with `gcc` and `make` installed
+  * An ActiveTcl installation in `C:\ActiveTcl`
+  * `C:\msys64\mingw64\bin` and `C:\ActiveTcl\lib` should be in PATH
+
+- macOS
+  * Nothing 🎉
+
+
 
 
 ## Credits
